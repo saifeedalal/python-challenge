@@ -2,6 +2,7 @@
 import os
 import csv
 
+#Defining variables
 netProfit = 0
 revenue = 0
 revenueDifference = []
@@ -12,7 +13,9 @@ pybank_file_path = os.path.join("Resources","budget_data.csv")
 
 with open(pybank_file_path,'r') as pybankFile:
 
+    #Reading the input csv file
     pybankCsvReader = csv.reader(pybankFile,delimiter = ",")
+    #Excluding Header row
     pybankCsvHeader = next(pybankCsvReader)
 
     for pybankRow in pybankCsvReader:
@@ -38,6 +41,7 @@ with open(pybank_file_path,'r') as pybankFile:
     print (f"Greatest Increase in Profits: {listOfMonths[revenueDifference.index(max(revenueDifference)) + 1]} (${max(revenueDifference)})")
     print (f"Greatest Decrease in Profits: {listOfMonths[revenueDifference.index(min(revenueDifference)) + 1]} (${min(revenueDifference)})")
 
+    #Writing output to the text file
     with open("Output.txt", "w") as text_file:
         print ("\nFinancial Analysis", file=text_file)
         print ("-----------------------------------------",file=text_file)
